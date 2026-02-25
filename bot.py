@@ -1,5 +1,6 @@
 import telebot
 import config
+import  AI
 
 API_TOKEN = config.TOKEN
 
@@ -13,7 +14,7 @@ def send_welcome(message):
 
 @bot.message_handler(content_types=["text"])
 def echo_message(message):
-    bot.reply_to(message, message.text)
+    bot.reply_to(message, AI.gpt(message.text), parse_mode='Markdown')
 
 
 bot.infinity_polling()
